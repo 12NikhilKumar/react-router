@@ -1,38 +1,29 @@
 import React from 'react'
-import  { BrowserRouter as Router, Route, Switch,Link } from "react-router-dom";
-import Home from "./Home";
-import About from "./About";
-import Contact from "./Contact";
-import Login from "./Login";
-import Services from "./Services";
+import  {Route, Switch,Link} from "react-router-dom";
+import Home from './Home';
+import Login from './login';
+import Private from './privateroute'
+import Dashboard from './dasgbord'
 function NavBar() {
   return (
     <>
       <>
         <div>
           <Link to="/">Home</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/about-us">About</Link>
-          <Link to="/services">Services</Link>
           <Link to="/login">Login</Link>
+          <Link to="/dashboard">Dashboard</Link>
         </div>
         <Switch>
         <Route exact path="/">
-				  <Home/>
+          <Home/>
         </Route>
-        <Route path="/about-us">
-          <About />
+        <Route exact path="/login">
+          <Login/>
         </Route>
-        <Route path="/contact">
-          <Contact />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/services">
-          <Services />
-        </Route>
-        </Switch>
+        <Private exact={true} path="/dashboard">
+          <Dashboard />
+        </Private>
+      </Switch>
       </>
     </>
   )
